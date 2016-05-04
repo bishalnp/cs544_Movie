@@ -1,19 +1,20 @@
 package controller;
 
-public class Director extends Artists {
-	private String role;
+import javax.persistence.Column;
 
+public class Director extends Artists {
+	 @Column(name="director")
+	    private String director;
 	public Director(String name, String dOB, String birthPlace, String biography, String characters, byte[] picture,
 			Movie movie) {
 		super(name, dOB, birthPlace, biography, characters, picture, movie);
 	}
-
-	public String getRole() {
-		return role;
+	public String getDirector() {
+		return director;
 	}
-
-	public void setRole(String role) {
-		this.role = role;
+	public void setDirector(String director) {
+		this.director = director;
 	}
-
+	
+	
 }
