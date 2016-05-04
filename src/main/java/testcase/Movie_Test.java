@@ -11,4 +11,23 @@ public class Movie_Test {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	public void getMovieByName() {
+
+	}
+
+	@Test
+	public void getMovieByYear() {
+
+	}
+
+	@Test
+	public void getMovieByGenre() {
+
+	}
+
+	@Test
+	public void getMovieByRating() {
+
+	}
 }
