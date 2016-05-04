@@ -5,5 +5,6 @@ import java.util.List;
 import controller.Artists;
 
 public interface ArtistsDAO {
-	public List<Artists> getAllMovieByName();
+	public List<Artists> getAllArtist();
+	public List<Artists> getArtistCharacter();
 }

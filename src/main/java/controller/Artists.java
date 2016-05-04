@@ -1,13 +1,17 @@
 package controller;
 
+import java.text.DateFormat;
 import java.util.Date;
+import java.util.Locale;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Artists {
@@ -15,26 +19,42 @@ public class Artists {
 	@GeneratedValue
 	private int actorId;
 	private String name;
+	@Temporal(TemporalType.DATE)
 	private Date DOB;
 	private String birthPlace;
 	private String biography;
 	private String characters;
 	@Lob
 	private byte[] picture;
-	@ManyToOne
-	@JoinColumn(name = "movie")
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Movie movie;
+	private static DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.US);
 
-	public Artists(String name, Date dOB, String birthPlace, String biography, String characters, byte[] picture,
+	public Artists() {
+	}
+
+	public Artists(String name, String dOB, String birthPlace, String biography, String characters, byte[] picture,
 			Movie movie) {
 		super();
 		this.name = name;
-		DOB = dOB;
+		setDOB(dOB);
 		this.birthPlace = birthPlace;
 		this.biography = biography;
 		this.characters = characters;
 		this.picture = picture;
 		this.movie = movie;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
+	}
+
+	public void setActorId(int actorId) {
+		this.actorId = actorId;
 	}
 
 	public String getCharacters() {
@@ -53,12 +73,16 @@ public class Artists {
 		this.name = name;
 	}
 
-	public Date getDOB() {
-		return DOB;
+	public String getDOB() {
+		return df.format(DOB);
 	}
 
-	public void setDOB(Date dOB) {
-		DOB = dOB;
+	public void setDOB(String dOB) {
+		try {
+			this.DOB = df.parse(dOB);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getBirthPlace() {

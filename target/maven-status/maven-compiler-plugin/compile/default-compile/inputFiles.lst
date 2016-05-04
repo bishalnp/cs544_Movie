@@ -1,7 +1,13 @@
-Z:\EA\Movie\src\main\java\controller\Director.java
-Z:\EA\Movie\src\main\java\application\Application.java
-Z:\EA\Movie\src\main\java\controller\Characters.java
-Z:\EA\Movie\src\main\java\controller\Genre.java
-Z:\EA\Movie\src\main\java\controller\Artists.java
-Z:\EA\Movie\src\main\java\controller\Movie.java
-Z:\EA\Movie\src\main\java\controller\Comment.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\DAOImplement\MovieImplement.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\DAOService\MovieDAO.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\DAOImplement\CommentImplement.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\controller\Characters.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\controller\Genre.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\DAOService\ArtistsDAO.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\controller\Artists.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\controller\Director.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\controller\Comment.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\controller\Movie.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\DAOImplement\ArtistsImplement.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\DAOService\CommentDAO.java
+D:\Study Document\Course\EA\Arrocha\cs544_Movie\src\main\java\application\Application.java

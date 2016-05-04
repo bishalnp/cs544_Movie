@@ -1,11 +1,9 @@
 package controller;
 
-import java.util.Date;
-
 public class Director extends Artists {
 	private String role;
 
-	public Director(String name, Date dOB, String birthPlace, String biography, String characters, byte[] picture,
+	public Director(String name, String dOB, String birthPlace, String biography, String characters, byte[] picture,
 			Movie movie) {
 		super(name, dOB, birthPlace, biography, characters, picture, movie);
 	}

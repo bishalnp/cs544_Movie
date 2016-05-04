@@ -1,20 +1,30 @@
 package controller;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@Embeddable
 @Entity
 public class Comment {
 	@Id
 	@GeneratedValue
 	private int commentId;
 	private String comment;
-	@ManyToOne
-	@JoinColumn(name = "movie")
-	private Movie movieComment;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private Movie movie;
+
+	public Comment() {
+	}
+
+	public Comment(String comment, Movie movie) {
+		super();
+		this.comment = comment;
+		this.movie = movie;
+	}
 
 	public String getComment() {
 		return comment;
@@ -25,11 +35,11 @@ public class Comment {
 	}
 
 	public Movie getMovieComment() {
-		return movieComment;
+		return movie;
 	}
 
-	public void setMovieComment(Movie movieComment) {
-		this.movieComment = movieComment;
+	public void setMovieComment(Movie movie) {
+		this.movie = movie;
 	}
 
 	public int getCommentId() {

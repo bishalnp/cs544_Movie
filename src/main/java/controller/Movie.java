@@ -1,34 +1,70 @@
 package controller;
 
-import java.time.LocalDate;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Movie {
 	@Id
 	@GeneratedValue
 	private int movieId;
+
+	@Lob
 	private byte[] poster;
 	private String summary;
 	private String title;
-	private LocalDate year;
+	@Temporal(TemporalType.DATE)
+	private Date year;
 	private String rating;
 	@Enumerated(EnumType.STRING)
 	private Genre genre;
 	@OneToMany(mappedBy = "movie")
 	List<Artists> lstArtist = new ArrayList<Artists>();
-	@OneToMany(mappedBy = "movieComment")
-	@ElementCollection
+
+	@OneToMany(mappedBy = "movie")
 	List<Comment> lstComment = new ArrayList<Comment>();
+	private static DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.US);
+
+	public Movie() {
+	}
+
+	public Movie(String title, String summary, String year, String rating, Genre genre, List<Artists> lstArtist,
+			List<Comment> lstComment, byte[] poster) {
+		super();
+		this.poster = poster;
+		this.summary = summary;
+		this.title = title;
+		setYear(year);
+		this.rating = rating;
+		this.genre = genre;
+		this.lstArtist = lstArtist;
+		this.lstComment = lstComment;
+	}
+
+	public List<Comment> getLstComment() {
+		return lstComment;
+	}
+
+	public void setLstComment(List<Comment> lstComment) {
+		this.lstComment = lstComment;
+	}
+
+	public void setMovieId(int movieId) {
+		this.movieId = movieId;
+	}
 
 	public Genre getGenre() {
 		return genre;
@@ -62,12 +98,16 @@ public class Movie {
 		this.title = title;
 	}
 
-	public LocalDate getYear() {
-		return year;
+	public String getYear() {
+		return df.format(year);
 	}
 
-	public void setYear(LocalDate year) {
-		this.year = year;
+	public void setYear(String year) {
+		try {
+			this.year = df.parse(year);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getRating() {
